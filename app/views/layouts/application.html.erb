@@ -8,7 +8,18 @@
 </head>
 <body>
 
-<%= yield %>
+ <% if user_signed_in? %>
+   You are currently signed in as <%= current_user.name %>, not you?
+   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+ <% else %>
+  <% link_to "Sign In", new_user_session_path %>
+ <% end %>
+
+	<% flash.each do |name, msg| %>
+	  <%= content_tag(:div, msg, class: "alert alert-info") %>
+	<% end %>
+
+	<%= yield %>
 
 </body>
 </html>

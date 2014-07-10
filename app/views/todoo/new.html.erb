@@ -1,0 +1,14 @@
+<h1> 
+	Add new item to your todo
+</h1>
+<% form_for @todo, :url => todoo_path(@todo) do |f| %>
+  <p>
+  	<%= f.label :name %> <%= f.text_field :name %>
+  </p>
+  <p>
+  	<%= f.hidden_field :done, :value => false %>
+  </p>
+  <p>
+  	<%= f.submit "Add to todoo list" %>
+  </p>
+<% end %>
